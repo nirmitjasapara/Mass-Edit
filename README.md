@@ -1,22 +1,14 @@
-# Express Boilerplate!
+# Mass Edit Server
 
-This is a boilerplate project used for starting new projects!
 
-## Set up
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+### Users Endpoints
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
-7. Create Migrations, seeder and specify the database in the config file
-8. Create routers for endpoints and apply them in app.js
-9. pg_ctl start if not started yet
-10. createdb -U dunder_mifflin boilerplate
-11. npm run migrate
+### ▸ `GET /api/users/:user_id`
+
+Returns the data for the user specified by `user_id`.
+
+If no user could be found by `user_id`, the server responds with a status `400`.
 
 ## Scripts
 
@@ -26,12 +18,29 @@ Start nodemon for the application `npm run dev`
 
 Run the tests `npm test`
 
+## Create local
+1. pg_ctl start if not started yet
+2. createdb -U user_name editordb
+3. npm run migrate
+
 ## Tear Down
 1. npm run migrate -- 0
-2. dropdb boilerplate
+2. dropdb db_name
 3. pg_ctl stop
 
 ## Heroku
 1. heroku create
 2. heroku addons:create heroku-postgresql:hobby-dev
 3. heroku config:set JWT_SECRET=paste-your-token-here
+
+## Technology Stack
+
+### Backend
+- **Express** for handling API requests
+- **Node** for interacting with the file system 
+- **Knex.js** for interfacing with the **PostgreSQL** database
+- **Postgrator** for database migration
+- **Mocha**, **Chai**, **Supertest** for endpoints testing
+- **JSON Web Token**, **bcryptjs** for user authentication / authorization
+- **Xss** for cross-site scripting protection
+- **Winston**, **Morgan** for logging and errors
