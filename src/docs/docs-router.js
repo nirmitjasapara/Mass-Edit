@@ -30,7 +30,7 @@ docsRouter
           .then(cdocs => {
             docs[c] =
               c == "original"
-                ? cdocs
+                ? cdocs.map(serializeDoc)
                 : cdocs.map(doc => {
                     if (doc.substitution_string !== null)
                       doc.text = JSON.parse(doc.substitution_string).reduce(
